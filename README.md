@@ -2,6 +2,10 @@
 
 Uses GNU Stow as the linker of syms
 
+## Xorg
+
+- `sudo pacman -S xorg-server xorg-xinit xorg-xinput`
+
 ## ZSH
 
 - Create the `~/.cache/zsh` folder
