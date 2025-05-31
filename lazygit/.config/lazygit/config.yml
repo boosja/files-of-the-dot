@@ -1,0 +1,6 @@
+gui:
+  showFileTree: false
+  showBottomLine: false
+  showPanelJumps: false
+  border: 'double'
+  filterMode: 'fuzzy'
