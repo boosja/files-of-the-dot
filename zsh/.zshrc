@@ -43,13 +43,15 @@ alias ll='LC_COLLATE=C.UTF8 ls -Al --group-directories-first --color=auto'
 alias j='z'
 alias lg='lazygit'
 
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
-source /home/bsj/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # fnm
 FNM_PATH="/home/bsj/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="/home/bsj/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
+# fnm completions
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+source /home/bsj/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
