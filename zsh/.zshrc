@@ -46,3 +46,10 @@ alias lg='lazygit'
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 source /home/bsj/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# fnm
+FNM_PATH="/home/bsj/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/bsj/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
