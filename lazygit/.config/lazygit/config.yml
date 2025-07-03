@@ -4,3 +4,5 @@ gui:
   showPanelJumps: false
   border: 'double'
   filterMode: 'fuzzy'
+git:
+  autoFetch: false
