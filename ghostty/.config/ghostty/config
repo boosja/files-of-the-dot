@@ -9,3 +9,6 @@
 #
 
 window-decoration = false
+
+# PAGER SHOULD BE less! (man-pages)
+command = env PAGER=less $SHELL
