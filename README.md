@@ -13,7 +13,7 @@ Uses GNU Stow as the linker of syms
                  nvim git brightnessctl stow \
                  libxft libxinerama \
                  zsh zoxide starship unzip bat fzf
-                 ghostty lazygit
+                 ghostty lazygit openssh
   ```
 - Change brightness: `brightnessctl set 100%`
 - Clone dotfiles: git clone
