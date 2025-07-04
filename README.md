@@ -52,24 +52,25 @@ Now 1password handles the ssh connection to github (and others)
     * Create the `~/.cache/zsh` folder
     * Zsh Autosuggestions: `git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions`
     * Zsh Syntax Highlighting: `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting`
-- `cd ~/dotfiles && stow zsh`
+    * DELETE THE ohmyzsh .zshrc-FILE!
+- `stow -d ~/dotfiles zsh`
 - Install fnm (Fast Node Manager):
   `curl -fsSL https://fnm.vercel.app/install | bash`
 
 ### lazygit
 
 - `sudo pacman -S lazygit`
-- `cd ~/dotfiles && stow lazygit`
+- `stow -d ~/dotfiles lazygit`
 
 ### Ghostty
 
 - `sudo pacman -S ghostty`
-- `cd ~/dotfiles && stow ghostty`
+- `stow -d ~/dotfiles ghostty`
 
 ### Xorg
 
 - `sudo pacman -S xorg-server xorg-xinit xorg-xinput`
-- `cd ~/dotfiles && stow xorg`
+- `stow -d ~/dotfiles xorg`
 
 ### dwm
 
