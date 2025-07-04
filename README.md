@@ -13,7 +13,7 @@ Uses GNU Stow as the linker of syms
                  nvim git brightnessctl stow \
                  libxft libxinerama \
                  zsh zoxide starship unzip bat fzf \
-                 ghostty lazygit openssh
+                 ghostty lazygit openssh qutebrowser
   ```
 
 ### Preliminary items
@@ -77,4 +77,9 @@ Now 1password handles the ssh connection to github (and others)
 - `sudo pacman -S libxft libxinerama`
 - `git clone git@github.com:boosja/dwm.git ~/.local/src/dwm`
 - `cd ~/.local/src/dwm && sudo make clean install`
+
+### qutebrowser
+
+- `sudo pacman -S qutebrowser`
+- `stow -d ~/dotfiles qutebrowser`
 
