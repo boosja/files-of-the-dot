@@ -13,7 +13,9 @@ Uses GNU Stow as the linker of syms
                  nvim git brightnessctl stow \
                  libxft libxinerama \
                  zsh zoxide starship unzip bat fzf \
-                 ghostty lazygit openssh qutebrowser
+                 ghostty lazygit openssh qutebrowser \
+                 ttf-firacode-nerd ttf-inconsolata-nerd otf-opendyslexic-nerd \
+                 jq
   ```
 
 ### Preliminary items
@@ -82,4 +84,12 @@ Now 1password handles the ssh connection to github (and others)
 
 - `sudo pacman -S qutebrowser`
 - `stow -d ~/dotfiles qutebrowser`
+
+### EWW (topbar)
+
+- Install rust: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+- Follow instructions in EWW documentation
+- Install Nerd Font: `sudo pacman -S ttf-inconsolata-nerd`
+- Install wireless tools: `sudo pacman -S wireless_tools`
+
 

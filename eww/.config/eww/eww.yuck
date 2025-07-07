@@ -1,0 +1,80 @@
+(defpoll tags :interval "86400s" :initial "[]"
+  `dwm-msg get_tags | jq -c 'map(.name)'`)
+(defpoll tags2 :interval "86400s" :initial "[]"
+  `dwm-msg get_tags`)
+(deflisten current :initial "1"
+  `dwm-msg subscribe tag_change_event | jq --unbuffered '.tag_change_event.new_state.selected // 1'`)
+(defpoll volume :interval "1s" :initial 50
+  `wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | awk '{print $2 * 100}'`)
+(defpoll battery :interval "60s" :initial 100
+  `cat /sys/class/power_supply/BAT0/capacity`)
+(defpoll brightness :interval "5s" :initial 100
+  `brightnessctl -m | cut -d, -f4 | tr -d %`)
+(defpoll SSID :interval "60s"
+  `iwgetid -r`)
+
+(defwidget bar []
+  (centerbox :orientation "h"
+    (workspaces :current current)
+    time
+    (sidestuff)))
+
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (box :orientation "h"
+         :space-evenly false
+	 :spacing 10
+     (box :class "label" " ")
+     (box :class "ssid" "${EWW_TEMPS['THINKPAD_CPU']}°C"))
+    (metric :label " "
+            :value volume
+            :onchange "")
+    (metric :label " "
+            :value battery
+	    :onchange "")
+    (metric :label " "
+            :value brightness
+            :onchange "")
+    (box :orientation "h"
+         :space-evenly false
+	 :spacing 10
+     (box :class "label" "󰖩 ")
+     (box :class "ssid" SSID))
+    ))
+
+(defwidget workspaces [current]
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "start"
+    (for tag in { jq(tags2, 'map(.name)') }
+      (label :text tag
+             :class { tag == jq(tags2, ".[] | select(.bit_mask == ${current}) | .name", "r") ? "tag active" : "tag" }))))
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+
+(defpoll time :interval "1s"
+  "date '+[%V] %a %b %-d %H:%M'")
+
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "20px"
+                      :anchor "top center")
+  :reserve (struts :side "top" :distance "4%")
+  :wm-ignore true
+  (bar))
+

@@ -1,0 +1,54 @@
+* {
+  all: unset; // Unsets everything so you can style everything from scratch
+  font-family: "Noto Sans Mono";
+}
+
+// Global Styles
+.bar {
+  background-color: #3a3a3a;
+  color: #b0b4bc;
+  font-size: 12px;
+}
+
+.label {
+  font-family: "Firacode Nerd Font";
+  font-size: 13pt;
+}
+
+.ssid {
+  margin-right: 10px;
+}
+
+.sidestuff slider {
+  all: unset;
+  color: #ffd5cd;
+}
+
+.metric scale trough highlight {
+  all: unset;
+  background-color: #D35D6E;
+  color: #000000;
+  border-radius: 10px;
+}
+
+.metric scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.tag {
+  padding: 0px 10px;
+}
+
+.active {
+  background-color: #1f1f1f;
+}
+
+.not-active {
+}
+
