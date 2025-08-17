@@ -95,7 +95,7 @@ Now 1password handles the ssh connection to github (and others)
 
 ## Qualcomm® Wi-Fi 7 NCM825
 
-Thinkpad T14 Gen 5
+Thinkpad T14 Gen 5 (AMD)
 
 This is with Omarchy (if that makes a difference).
 Before anything else, try: 
