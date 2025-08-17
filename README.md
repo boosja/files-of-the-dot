@@ -93,3 +93,53 @@ Now 1password handles the ssh connection to github (and others)
 - Install wireless tools: `sudo pacman -S wireless_tools`
 
 
+## Qualcomm® Wi-Fi 7 NCM825
+
+Thinkpad T14 Gen 5
+
+This is with Omarchy (if that makes a difference).
+Before anything else, try: 
+```
+# /etc/iwd/main.conf
+[General]
+EnableNetworkConfiguration=true
+ControlPortOverNL80211=false
+```
+
+If that does not work, try this too (in addition to the above):
+```
+# Extract the current compressed firmware files
+cd /lib/firmware/ath12k/WCN7850/hw2.0/
+sudo zstd -d *.zst
+
+# Verify they extracted
+ls -la *.bin
+
+# Now let's get the updated firmware that fixes the known issues
+cd /tmp
+git clone https://git.codelinaro.org/clo/ath-firmware/ath12k-firmware.git
+
+# Backup current firmware
+sudo cp -r /lib/firmware/ath12k/WCN7850 /lib/firmware/ath12k/WCN7850.backup
+
+# Copy the newer stable firmware
+sudo cp ath12k-firmware/WCN7850/hw2.0/1.0.c5/WLAN.HMT.1.0.c5-00481-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3/amss.bin /lib/firmware/ath12k/WCN7850/hw2.0/
+sudo cp ath12k-firmware/WCN7850/hw2.0/1.0.c5/WLAN.HMT.1.0.c5-00481-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3/m3.bin /lib/firmware/ath12k/WCN7850/hw2.0/
+
+# Make sure board-2.bin exists (uncompressed)
+sudo cp ath12k-firmware/WCN7850/hw2.0/board-2.bin /lib/firmware/ath12k/WCN7850/hw2.0/
+
+# Unload the module
+sudo modprobe -r ath12k_pci
+sudo modprobe -r ath12k
+
+# Clear the kernel ring buffer to see fresh messages
+sudo dmesg -C
+
+# Reload the module
+sudo modprobe ath12k_pci
+sudo modprobe ath12k
+
+# Check the initialization messages
+sudo dmesg | head -30
+```
