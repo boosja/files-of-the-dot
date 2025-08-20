@@ -39,9 +39,17 @@ export TERMINAL=ghostty
 export EDITOR=nvim
 export BAT_THEME=base16
 
-alias ll='LC_COLLATE=C.UTF8 ls -Al --group-directories-first --color=auto'
+# From Omarchy
+alias ls='eza -lh --group-directories-first --icons=auto'
+alias lsa='ls -a'
+alias lt='eza --tree --level=2 --long --icons --git'
+alias lta='lt -a'
+alias ll=ls
+# alias ll='LC_COLLATE=C.UTF8 ls -Al --group-directories-first --color=auto'
+
 alias j='z'
 alias lg='lazygit'
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 
 # fnm
 FNM_PATH="/home/bsj/.local/share/fnm"
